@@ -25,3 +25,14 @@ dmenu
 )
 
 for i in ${repos[@]}; do (git clone https://github.com/axyl-os/axyl-${i}); done
+
+if [[ -d "$PWD/axyl-pkgbuild" ]]; then
+  cp ./upd-local.sh \
+     ./upd-3party.sh \
+     ./upd-core.sh ./axyl-pkgbuild/
+fi
+
+if [[ ! -f "$HOME/.gitconfig" ]]; then
+  git config --global user.email "matthewriel63@gmail.com"
+  git config --global user.name "Kungger-git"
+fi
