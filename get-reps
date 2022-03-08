@@ -21,7 +21,7 @@ dwmblocks
 lxdm-theme
 grub-theme
 dmenu
-axyl-wallpapers
+wallpapers
 )
 
 for i in ${repos[@]}; do (git clone https://github.com/axyl-os/axyl-${i}); done
