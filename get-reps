@@ -1,37 +1,43 @@
 #!/bin/bash
 
-declare -a repos=(
-repo
-skeleton
-core-repo
+org="https://github.com/axyl-os/"
+
+declare -a pkgbuild_repos=(
 pkgbuild
-iso
-bspwm
+repo
+core-repo
+repo-3party
+)
+
+declare -a wm_repos=(
 i3wm
+bspwm
 leftwm
 spectrwm
 xmonad
 riverwm
-calamares-config
-qtile
-os.github.io
-scripts
-repo-3party
 dwm
+qtile
+)
+
+declare -a base_repos=(
+iso
+calamares-config
+os.github.io
 dwmblocks
+skeleton
+scripts
 lxdm-theme
 grub-theme
 dmenu
 wallpapers
 )
 
-for i in ${repos[@]}; do (git clone https://github.com/axyl-os/axyl-${i}); done
+mkdir -p ./pkgbuild_repos ./wm_repos ./base_repos
 
-if [[ -d "$PWD/axyl-pkgbuild" ]]; then
-  cp ./upd-local.sh \
-     ./upd-3party.sh \
-     ./upd-core.sh ./axyl-pkgbuild/
-fi
+(cd ./pkgbuild_repos; for i in ${pkgbuild_repos[@]}; do (git clone ${org}axyl-${i}); done)
+(cd ./wm_repos; for i in ${wm_repos[@]}; do (git clone ${org}axyl-${i}); done)
+(cd ./base_repos; for i in ${base_repos[@]}; do (git clone ${org}axyl-${i}); done)
 
 if [[ ! -f "$HOME/.gitconfig" ]]; then
   git config --global user.email "matthewriel63@gmail.com"
