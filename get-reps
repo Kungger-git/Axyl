@@ -6,7 +6,7 @@ declare -a pkgbuild_repos=(
 pkgbuild
 repo
 core-repo
-repo-3party
+3party-repo
 )
 
 declare -a wm_repos=(
